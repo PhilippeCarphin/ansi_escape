@@ -1,0 +1,223 @@
+
+
+\033 == \x1b == ESC
+\0133 == \x5b == [
+\155 == \x6d == m
+
+Ref https://en.wikipedia.org/wiki/ANSI_escape_code#CSI_(Control_Sequence_Introducer)_sequences
+
+Control sequence introducer (CSI) := ESC [
+
+Set Graphic Rendigion (SGR) : CSI ${seq} m
+where seq is mostly a semi-colon separated list of numbers that change text
+attributes
+- 30-37 : Foreground color (90-97 : brigher versions)
+- 40-47 : Background color (100-107 : brigher versions)
+- 1 : bold
+- 2 : dim
+- 4 : underline
+- ...
+
+#+begin_src shell :exports code :results output
+output(){
+echo -e  "============ 30-37 Foreground color"
+echo -ne "30: \033[30mBlack\033[0m "
+echo -ne "31: \033[31mRed\033[0m "
+echo -ne "32: \033[32mGreen\033[0m "
+echo -ne "33: \033[33mYellow\033[0m "
+echo -ne "34: \033[34mBlue\033[0m "
+echo -ne "35: \033[35mMagenta\033[0m "
+echo -ne "36: \033[36mCyan\033[0m "
+echo -e  "37: \033[37mWhite\033[0m "
+}
+output | aha
+#+end_src
+
+#+begin_export html
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- This file was created with the aha Ansi HTML Adapter. https://github.com/theZiz/aha -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xml+xhtml; charset=UTF-8"/>
+<title>stdin</title>
+</head>
+<body>
+<pre>
+============ 30-37 Foreground color
+30: <span style="color:dimgray;">Black</span> 31: <span style="color:red;">Red</span> 32: <span style="color:green;">Green</span> 33: <span style="color:olive;">Yellow</span> 34: <span style="color:blue;">Blue</span> 35: <span style="color:purple;">Magenta</span> 36: <span style="color:teal;">Cyan</span> 37: <span style="color:gray;">White</span> 
+</pre>
+</body>
+</html>
+#+end_export
+
+#+begin_src shell :results output :exports code
+output(){
+echo -e  "============ 40-47 Background color"
+echo -ne "40: \033[40mBlack\033[0m "
+echo -ne "41: \033[41mRed\033[0m "
+echo -ne "42: \033[42mGreen\033[0m "
+echo -ne "43: \033[43mYellow\033[0m "
+echo -ne "44: \033[44mBlue\033[0m "
+echo -ne "45: \033[45mMagenta\033[0m "
+echo -ne "46: \033[46mCyan\033[0m "
+echo -e  "47: \033[47mWhite\033[0m "
+}
+output | aha
+#+end_src
+
+#+begin_export html
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- This file was created with the aha Ansi HTML Adapter. https://github.com/theZiz/aha -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xml+xhtml; charset=UTF-8"/>
+<title>stdin</title>
+</head>
+<body>
+<pre>
+============ 40-47 Background color
+40: <span style="background-color:black;">Black</span> 41: <span style="background-color:red;">Red</span> 42: <span style="background-color:green;">Green</span> 43: <span style="background-color:olive;">Yellow</span> 44: <span style="background-color:blue;">Blue</span> 45: <span style="background-color:purple;">Magenta</span> 46: <span style="background-color:teal;">Cyan</span> 47: <span style="background-color:gray;">White</span> 
+</pre>
+</body>
+</html>
+#+end_export
+
+#+begin_src shell :results output :exports code
+output(){
+echo -e  "============ 90-97 \033[4mbright\033[0m Foreground color"
+echo -ne "30: \033[30mBlack\033[0m "
+echo -ne "31: \033[31mRed\033[0m "
+echo -ne "32: \033[32mGreen\033[0m "
+echo -ne "33: \033[33mYellow\033[0m "
+echo -ne "34: \033[34mBlue\033[0m "
+echo -ne "35: \033[35mMagenta\033[0m "
+echo -ne "36: \033[36mCyan\033[0m "
+echo -e  "37: \033[37mWhite\033[0m "
+}
+output | aha
+#+end_src
+
+#+begin_export html
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- This file was created with the aha Ansi HTML Adapter. https://github.com/theZiz/aha -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xml+xhtml; charset=UTF-8"/>
+<title>stdin</title>
+</head>
+<body>
+<pre>
+============ 90-97 <span style="text-decoration:underline;">bright</span> Foreground color
+30: <span style="color:dimgray;">Black</span> 31: <span style="color:red;">Red</span> 32: <span style="color:green;">Green</span> 33: <span style="color:olive;">Yellow</span> 34: <span style="color:blue;">Blue</span> 35: <span style="color:purple;">Magenta</span> 36: <span style="color:teal;">Cyan</span> 37: <span style="color:gray;">White</span> 
+</pre>
+</body>
+</html>
+#+end_export
+
+#+begin_src shell :results output :exports code
+output(){
+echo -e  "============ 100-107 \033[4mbright\033[0m Background color"
+echo -ne "40: \033[40mBlack\033[0m "
+echo -ne "41: \033[41mRed\033[0m "
+echo -ne "42: \033[42mGreen\033[0m "
+echo -ne "43: \033[43mYellow\033[0m "
+echo -ne "44: \033[44mBlue\033[0m "
+echo -ne "45: \033[45mMagenta\033[0m "
+echo -ne "46: \033[46mCyan\033[0m "
+echo -e  "47: \033[47mWhite\033[0m "
+}
+output | aha
+#+end_src
+
+#+begin_export html
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- This file was created with the aha Ansi HTML Adapter. https://github.com/theZiz/aha -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xml+xhtml; charset=UTF-8"/>
+<title>stdin</title>
+</head>
+<body>
+<pre>
+============ 100-107 <span style="text-decoration:underline;">bright</span> Background color
+40: <span style="background-color:black;">Black</span> 41: <span style="background-color:red;">Red</span> 42: <span style="background-color:green;">Green</span> 43: <span style="background-color:olive;">Yellow</span> 44: <span style="background-color:blue;">Blue</span> 45: <span style="background-color:purple;">Magenta</span> 46: <span style="background-color:teal;">Cyan</span> 47: <span style="background-color:gray;">White</span> 
+</pre>
+</body>
+</html>
+#+end_export
+
+#+begin_src shell :results output :exports code
+output(){
+echo -e "============ Change text attributes"
+echo -e "1: \033[1mBold\033[0m - Terminal emulator may have setting to use a bold font, otherwise, it may just be brighter\033[0m"
+echo -e "2: \033[2mDim - May be implemented as a light font weight like bold\033[0m"
+echo -e "3: \033[3mItalic - Not widely supported. Sometimes treated as inverse or blink.\033[0m"
+echo -e "4: \033[4mUnderline\033[0m"
+echo -e "5: \033[5mSlow Blink - May need to be enabled in terminal emulator\033[0m"
+echo -e "6: \033[6mFast Blink - May need to be enabled in terminal emulator\033[0m"
+echo -e "7: \033[7mReverse video or invert - Swap foreground and background colors; inconsistent emulation\033[0m"
+echo -e "8: \033[8mConceal or hide - Not widely supported.\033[0m"
+echo -e "9: \033[9mStrikethrough : (not everywhere)\033[0m"
+}
+output | aha
+#+end_src
+
+#+begin_export html
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- This file was created with the aha Ansi HTML Adapter. https://github.com/theZiz/aha -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xml+xhtml; charset=UTF-8"/>
+<title>stdin</title>
+</head>
+<body>
+<pre>
+============ Change text attributes
+1: <span style="font-weight:bold;">Bold</span> - Terminal emulator may have setting to use a bold font, otherwise, it may just be brighter
+2: Dim - May be implemented as a light font weight like bold
+3: <span style="font-style:italic;">Italic - Not widely supported. Sometimes treated as inverse or blink.</span>
+4: <span style="text-decoration:underline;">Underline</span>
+5: <span style="text-decoration:blink;">Slow Blink - May need to be enabled in terminal emulator</span>
+6: Fast Blink - May need to be enabled in terminal emulator
+7: <span style="color:white;background-color:black;">Reverse video or invert - Swap foreground and background colors; inconsistent emulation</span>
+8: Conceal or hide - Not widely supported.
+9: <span style="text-decoration:line-through;">Strikethrough : (not everywhere)</span>
+</pre>
+</body>
+</html>
+#+end_export
+
+#+begin_src shell :results output :exports code
+output(){
+echo "=================== Combinations"
+echo -e "1;92;44;4: \033[1;92;44;4mBold underlined bright green on blue background\033[0m"
+echo -e "1;45: \033[1;45mBold bright white on magenta background\x1b\x5b;0\x6d"
+echo -e "6;1;4;9;34;46: \x1b[6;1;4;9;34;46mFlashing bold underline strikethrough\033[0m"
+}
+output | aha
+#+end_src
+
+#+begin_export html
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- This file was created with the aha Ansi HTML Adapter. https://github.com/theZiz/aha -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xml+xhtml; charset=UTF-8"/>
+<title>stdin</title>
+</head>
+<body>
+<pre>
+=================== Combinations
+1;92;44;4: <span style="text-decoration:underline;font-weight:bold;color:green;background-color:blue;">Bold underlined bright green on blue background</span>
+1;45: <span style="font-weight:bold;background-color:purple;">Bold bright white on magenta background</span>
+6;1;4;9;34;46: <span style="text-decoration:underline;font-weight:bold;text-decoration:line-through;color:blue;background-color:teal;">Flashing bold underline strikethrough</span>
+</pre>
+</body>
+</html>
+#+end_export
