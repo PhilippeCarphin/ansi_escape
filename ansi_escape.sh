@@ -17,6 +17,7 @@
 # - 2 : dim
 # - 4 : underline
 # - ...
+printf "CSI == ESC[ == %s\n" "\\033["
 
 printf "============ 30-37 Foreground color\n"
 printf "30: \033[30mBlack\033[0m "
@@ -69,10 +70,10 @@ printf "7: \033[7mReverse video or invert - Swap foreground and background color
 printf "8: \033[8mConceal or hide - Not widely supported.\033[0m\n"
 printf "9: \033[9mStrikethrough : (not everywhere)\033[0m\n"
 printf "============ Reset text attributes\n"
-printf "22: Normal intensity (reset bold)\n"
+printf "22: Normal intensity (unset bold or dim)\n"
 printf "23: Not italic\n"
 printf "24: Not underlined\n"
-printf "25: Not blinking    Turn blinking off\n"
+printf "25: Not blinking\n"
 printf "26: ???\n"
 printf "27: Not reversed\n"
 printf "28: Reveal  (Not concealed)\n"
@@ -97,8 +98,10 @@ printf "CSI <n> C: CUF Cursor Forward\n"
 printf "CSI <n> D: CUB Cursor Back\n"
 printf "CSI s : Save cursor position\n"
 printf "CSI u : Restore cursor position\n"
-printf "CSI <n> K: Erase line (0/missing: cursor-to-EOL, 1: cursor-to-BOL, 2: Entire line)"
-printf "CSI <n> J: Erase display (0/missing: cursor-to-EOD, 1: cursor-to-BOD, 2: Entire Display"
-printf "=================== Set Window title (intercepted by TMUX and put in #T which can then be used in 'set-titles-string')\n"
+printf "CSI <n> K: Erase line (0/missing: cursor-to-EOL, 1: cursor-to-BOL, 2: Entire line)\n"
+printf "CSI <n> J: Erase display (0/missing: cursor-to-EOD, 1: cursor-to-BOD, 2: Entire Display\n"
+printf "=================== Set Window title \n"
 printf "%s]0;TITLE HERE%s\n" "\\033" "\\007"
+printf "NOTE: intercepted by TMUX and put in #T which can then be used in 'set-titles-string\n'"
+printf "      TMUX puts its own thing in the title of the terminal emulator\n"
 
